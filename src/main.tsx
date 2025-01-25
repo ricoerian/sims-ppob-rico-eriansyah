@@ -13,11 +13,13 @@ import TopUp from './pages/TopUp';
 import Account from './pages/Account';
 import { PrivateRoute, TokenCheck } from './Middleware/PrivateRoute';
 import { GlobalToast } from './Components/Molecules/GlobalToast';
+import { Analytics } from "@vercel/analytics/react"
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
+        <Analytics/>
         <GlobalToast />
         <Routes>
           <Route path="/" element={<TokenCheck><Login /></TokenCheck>} />
