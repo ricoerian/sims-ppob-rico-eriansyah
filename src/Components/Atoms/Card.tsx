@@ -6,8 +6,10 @@ interface CardProps {
 
 const Card = ({ children }: CardProps) => {
   return (
-    <div className="flex m-auto mt-6 bg-white w-[50rem] rounded shadow-md">
+    <div className="flex justify-center items-center h-screen">
+      <div className="flex bg-white w-[50rem] rounded shadow-md">
         {children}
+      </div>
     </div>
   );
 }
