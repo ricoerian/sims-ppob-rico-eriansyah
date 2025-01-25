@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
         <a onClick={() => handleClick('/')} className='cursor-pointer'>
             <Box className='flex flex-row justify-center my-auto gap-2'>
                 <Image src="/assets/images/Logo.png" alt="Logo" />
-                <h1 className="text-2xl font-semibold">SIMS PPOB</h1>
+                <h1 className="text-2xl font-semibold">SIMS PPOB - Rico Eriansyah</h1>
             </Box>
         </a>
         <Box className="hidden md:flex space-x-6">
