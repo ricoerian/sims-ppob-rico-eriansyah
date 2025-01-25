@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className='border-b border-gray-200'>
       <Box className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <a onClick={() => handleClick('/')}>
+        <a onClick={() => handleClick('/')} className='cursor-pointer'>
             <Box className='flex flex-row justify-center my-auto gap-2'>
                 <Image src="/assets/images/Logo.png" alt="Logo" />
                 <h1 className="text-2xl font-semibold">SIMS PPOB</h1>
