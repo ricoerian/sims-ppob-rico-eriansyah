@@ -9,7 +9,7 @@
 - **Dashboard Interaktif**: Menampilkan informasi utama terkait transaksi pengguna.
 - **Layanan PPOB**: Mendukung berbagai jenis pembayaran, seperti listrik, air, pulsa, paket data, dan lainnya.
 - **Riwayat Transaksi**: Memungkinkan pengguna melacak histori pembayaran.
-- **Antarmuka Responsif**: Desain antarmuka modern dan kompatibel dengan perangkat desktop maupun mobile.
+- **Antarmuka Keren**: Desain antarmuka modern dan kompatibel dengan perangkat desktop.
 
 ---
 
@@ -68,7 +68,7 @@ Akses aplikasi langsung melalui [SIMS PPOB](https://sims-ppob-rico-eriansyah.ver
 ---
 
 ## 🛠️ Kontribusi
-Kontribusi selalu terbuka! Jika Anda menemukan bug atau memiliki ide fitur baru, silakan ajukan [issue](https://github.com/username/sims-ppob/issues) atau buat pull request.
+Kontribusi selalu terbuka! Jika Anda menemukan bug atau memiliki ide fitur baru, silakan ajukan [issue](https://github.com/ricoerian/sims-ppob-rico-eriansyah/issues) atau buat pull request.
 
 ---
 
