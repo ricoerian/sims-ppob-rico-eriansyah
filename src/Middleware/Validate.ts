@@ -29,6 +29,7 @@ export const validateRegistration = ({ first_name, last_name, email, password, c
     if (!email) newErrors.email = 'Email tidak boleh kosong';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) newErrors.email = 'Format email tidak valid';
     if (!password) newErrors.password = 'Password tidak boleh kosong';
+    if (password.length < 8) newErrors.password = 'Password harus lebih dari 8 karakter';
     if (!confirmPassword) newErrors.confirmPassword = 'Konfirmasi Password tidak boleh kosong';
     if (confirmPassword !== password) newErrors.confirmPassword = 'Password yang anda masukan tidak sama';
     setErrors(newErrors);
@@ -45,6 +46,6 @@ export const validateAmount = (amount: number): string | null => {
     if (!Number.isInteger(amount)) {
       return "Jumlah harus berupa angka bulat.";
     }
-    return null; // Valid
+    return null;
   };
   

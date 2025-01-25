@@ -8,6 +8,7 @@ import Box from "../Atoms/Box";
 import Form from "../Molecules/Form";
 import Button from "../Atoms/Button";
 import { useNavigate } from "react-router-dom";
+import { showToast } from "../../redux/slices/toastSlices";
 
 const AccountProfile = () => {
   const [first_name, setFirstName] = useState('');
@@ -37,11 +38,15 @@ const AccountProfile = () => {
     e.preventDefault();
     const result = await dispatch(putProfile({ token, first_name, last_name, email }));
     if (putProfile.fulfilled.match(result)) {
+      dispatch(showToast({ message: 'Data user berhasil diubah!', type: 'success' }));
       navigate('/akun');
+    } else {
+      dispatch(showToast({ message: 'Terjadi sebuah kesalahan, silahkan periksa kembali!', type: 'error' }));
     }
   };
   const handleLogout = () => {
     dispatch(logout());
+    dispatch(showToast({ message: 'Berhasil keluar!', type: 'success' }));
     navigate('/');
   };
 

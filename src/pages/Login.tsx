@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../redux/store';
 import { login } from '../redux/slices/slicer';
-import Toast from '../Components/Atoms/Toast';
 import { useNavigate } from 'react-router-dom';
 import { validateLogin } from '../Middleware/Validate';
 import Card from '../Components/Atoms/Card';
@@ -11,6 +10,7 @@ import Button from '../Components/Atoms/Button';
 import Form from '../Components/Molecules/Form';
 import Box from '../Components/Atoms/Box';
 import Image from '../Components/Atoms/Image';
+import { showToast } from '../redux/slices/toastSlices';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -18,14 +18,17 @@ const Login = () => {
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  const { loading, response, error } = useSelector((state: RootState) => state.slicer);
+  const { loading, error } = useSelector((state: RootState) => state.slicer);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (validateLogin({ email, password, setErrors })) {
       const result = await dispatch(login({ email, password }));
       if (login.fulfilled.match(result)) {
+        dispatch(showToast({ message: 'Berhasil Login!', type: 'success' }));
         navigate('/dashboard');
+      } else {
+        dispatch(showToast({ message: error ?? 'Terjadi sebuah kesalahan, silahkan periksa kembali!', type: 'error' }));
       }
     }
   };
@@ -39,8 +42,6 @@ const Login = () => {
                 <h1 className="text-2xl font-semibold">SIMS PPOB</h1>
             </Box>
             <h2 className="text-2xl font-semibold mb-4 text-center">Masuk atau buat akun untuk memulai</h2>
-            {error ? <Toast message={error} type='error' />
-            : response && <Toast message={(response as { message: string })?.message} type='success' />}
             <Input type='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
             {errors.email && <p className="text-red-500 mb-4">{errors.email}</p>}
             <Input type='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />

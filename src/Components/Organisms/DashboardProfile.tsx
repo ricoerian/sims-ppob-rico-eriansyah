@@ -28,7 +28,7 @@ const DasboardProfile = () => {
   return (
     <Box className="flex flex-row items-center justify-between">
       <Box className="my-8">
-        <Image src={user.profile_image || ''} alt={user.first_name || ''} className="rounded-full w-15 h-15 mb-2" />
+        <Image src={user.profile_image || ''} alt={user.first_name || ''} className="rounded-full w-20 h-20 mb-2" />
         <h1 className="font-semibold text-2xl">Selamat datang,</h1>
         <h1 className="font-semibold text-2xl">{user.first_name + ' ' + user.last_name}</h1>
       </Box>

@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Box from "../Atoms/Box";
 import { validateAmount } from "../../Middleware/Validate";
+import { showToast } from "../../redux/slices/toastSlices";
 
 const TopUpForm = () => {
   const [amount, setAmount] = useState(0);
@@ -36,8 +37,10 @@ const TopUpForm = () => {
 
     const result = await dispatch(postBalance({ token: token, top_up_amount: amount }));
     if (postBalance.fulfilled.match(result)) {
-      setIsSubmitting(false);
-      navigate("/dashboard");
+      dispatch(showToast({ message: 'Berhasil Top Up!', type: 'success' }));
+      navigate('/dashboard');
+    } else {
+      dispatch(showToast({ message: 'Terjadi sebuah kesalahan, silahkan periksa kembali!', type: 'error' }));
     }
   };
 

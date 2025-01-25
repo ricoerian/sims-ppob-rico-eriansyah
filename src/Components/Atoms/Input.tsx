@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { putImage } from "../../redux/slices/slicer";
 import { useNavigate } from "react-router-dom";
+import { showToast } from "../../redux/slices/toastSlices";
 
 interface InputProps {
     type: string;
@@ -57,8 +58,10 @@ export const InputFile: React.FC<InputFileProps> = ({ fileImage }) => {
 
       const result = await dispatch(putImage({ token: token, file: file }));
       if (putImage.fulfilled.match(result)) {
-        setImage(URL.createObjectURL(file));
-        navigate("/akun");
+        dispatch(showToast({ message: 'Foto profile Kamu berhasil diubah!', type: 'success' }));
+        navigate('/akun');
+      } else {
+        dispatch(showToast({ message: 'Terjadi sebuah kesalahan, silahkan periksa kembali', type: 'error' }));
       }
     }
   };

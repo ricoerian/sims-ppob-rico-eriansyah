@@ -5,6 +5,7 @@ const TransactionHistory = ({transactionHistory, loading, limit, setOffset}: {tr
     const handleShowMore = () => {
       setOffset((prevOffset: number) => prevOffset + limit);
     };
+    console.log(transactionHistory);
     return (
         <Box>
             <h1 className="text-lg font-semibold">Semua Transaksi</h1>

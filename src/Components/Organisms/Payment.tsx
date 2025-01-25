@@ -9,6 +9,7 @@ import { Service } from "../../Type/Services";
 import Image from "../Atoms/Image";
 import {Input} from "../Atoms/Input";
 import Button from "../Atoms/Button";
+import { showToast } from "../../redux/slices/toastSlices";
 
 const Payment = ({ serviceCode }: { serviceCode: string }) => {
   const dispatch: AppDispatch = useDispatch();
@@ -37,7 +38,10 @@ const Payment = ({ serviceCode }: { serviceCode: string }) => {
     }
     const result = await dispatch(postTransaction({ token: token, service_code: selectedService.service_code }));
     if (postTransaction.fulfilled.match(result)) {
+      dispatch(showToast({ message: 'Berhasil dibayar!', type: 'success' }));
       navigate('/dashboard');
+    } else {
+      dispatch(showToast({ message: 'Terjadi sebuah kesalahan, silahkan periksa kembali!', type: 'error' }));
     }
   };
     return (
