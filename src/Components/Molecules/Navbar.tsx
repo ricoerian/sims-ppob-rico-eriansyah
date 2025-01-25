@@ -23,9 +23,9 @@ const Navbar: React.FC = () => {
             </Box>
         </a>
         <Box className="hidden md:flex space-x-6">
-          <a onClick={() => handleClick('/topup')} className="hover:text-red-300">Top Up</a>
-          <a onClick={() => handleClick('/transaksi')} className="hover:text-red-300">Transaction</a>
-          <a onClick={() => handleClick('/akun')} className="hover:text-red-300">Akun</a>
+          <a onClick={() => handleClick('/topup')} className="hover:text-red-300 cursor-pointer">Top Up</a>
+          <a onClick={() => handleClick('/transaksi')} className="hover:text-red-300 cursor-pointer">Transaction</a>
+          <a onClick={() => handleClick('/akun')} className="hover:text-red-300 cursor-pointer">Akun</a>
         </Box>
         <Button
           className="md:hidden focus:outline-none"
@@ -58,9 +58,9 @@ const Navbar: React.FC = () => {
       </Box>
       {isMobileMenuOpen && (
         <Box className="md:hidden">
-          <a onClick={() => handleClick('/topup')} className="block px-4 py-2 hover:bg-blue-400">Top Up</a>
-          <a onClick={() => handleClick('/transaksi')} className="block px-4 py-2 hover:bg-blue-400">Transaction</a>
-          <a onClick={() => handleClick('/akun')} className="block px-4 py-2 hover:bg-blue-400">Akun</a>
+          <a onClick={() => handleClick('/topup')} className="block px-4 py-2 hover:bg-red-300 cursor-pointer">Top Up</a>
+          <a onClick={() => handleClick('/transaksi')} className="block px-4 py-2 hover:bg-red-300 cursor-pointer">Transaction</a>
+          <a onClick={() => handleClick('/akun')} className="block px-4 py-2 hover:bg-red-300 cursor-pointer">Akun</a>
         </Box>
       )}
     </nav>
