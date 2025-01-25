@@ -3,23 +3,29 @@ import React, { useState } from 'react';
 import Box from '../Atoms/Box';
 import Image from '../Atoms/Image';
 import Button from '../Atoms/Button';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
+  const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleClick = (redirect: string) => {
+    navigate(`${redirect}`);
+  };
 
   return (
     <nav className='border-b border-gray-200'>
       <Box className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <a href="/dashboard">
+        <a onClick={() => handleClick('/')}>
             <Box className='flex flex-row justify-center my-auto gap-2'>
                 <Image src="/assets/images/Logo.png" alt="Logo" />
                 <h1 className="text-2xl font-semibold">SIMS PPOB</h1>
             </Box>
         </a>
         <Box className="hidden md:flex space-x-6">
-          <a href="/topup" className="hover:text-red-300">Top Up</a>
-          <a href="/transaksi" className="hover:text-red-300">Transaction</a>
-          <a href="/akun" className="hover:text-red-300">Akun</a>
+          <a onClick={() => handleClick('/topup')} className="hover:text-red-300">Top Up</a>
+          <a onClick={() => handleClick('/transaksi')} className="hover:text-red-300">Transaction</a>
+          <a onClick={() => handleClick('/akun')} className="hover:text-red-300">Akun</a>
         </Box>
         <Button
           className="md:hidden focus:outline-none"
@@ -52,9 +58,9 @@ const Navbar: React.FC = () => {
       </Box>
       {isMobileMenuOpen && (
         <Box className="md:hidden">
-          <a href="/topup" className="block px-4 py-2 hover:bg-blue-400">Top Up</a>
-          <a href="/transaksi" className="block px-4 py-2 hover:bg-blue-400">Transaction</a>
-          <a href="/akun" className="block px-4 py-2 hover:bg-blue-400">Akun</a>
+          <a onClick={() => handleClick('/topup')} className="block px-4 py-2 hover:bg-blue-400">Top Up</a>
+          <a onClick={() => handleClick('/transaksi')} className="block px-4 py-2 hover:bg-blue-400">Transaction</a>
+          <a onClick={() => handleClick('/akun')} className="block px-4 py-2 hover:bg-blue-400">Akun</a>
         </Box>
       )}
     </nav>
